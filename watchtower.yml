@@ -1,0 +1,34 @@
+version: "3.6"
+services:
+  watchtower:
+    container_name: watchtower
+    entrypoint:
+      - /watchtower
+    environment:
+      - PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+      - TZ=Asia/Dubai
+      - WATCHTOWER_CLEANUP=1
+    expose:
+      - 8080/tcp
+    hostname: fdaef847b0f6
+    image: containrrr/watchtower
+    ipc: private
+    labels:
+      com.centurylinklabs.watchtower: true
+      com.docker.compose.config-hash: a7131bb6c6291b44d7457b7647b860f3d5b0acc2384e46f31a817790d8ba4103
+      com.docker.compose.container-number: 1
+      com.docker.compose.oneoff: False
+      com.docker.compose.project: docker
+      com.docker.compose.project.config_files: watchtower.yml
+      com.docker.compose.project.working_dir: /volume2/docker
+      com.docker.compose.service: watchtower
+      com.docker.compose.version: 1.28.5
+    logging:
+      driver: db
+      options: {}
+    mac_address: 02:42:ac:11:00:08
+    network_mode: bridge
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    working_dir: /
